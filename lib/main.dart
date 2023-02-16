@@ -7,7 +7,7 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:tata/presentation/pages/home_page.dart';
 
-void main() => runApp(const HomePage());
+void main() => runApp(const MaterialApp(home: HomePage()));
 
 class SpeechSampleApp extends StatefulWidget {
   const SpeechSampleApp({Key? key}) : super(key: key);

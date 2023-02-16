@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tata/presentation/widgets/custom_list_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,6 +27,8 @@ class _HomePageState extends State<HomePage> {
 
   Future<PermissionStatus> _getContactpermission() async {
     PermissionStatus permission = await Permission.contacts.status;
+    print('permission------------------------');
+    print(permission);
     // ignore: unrelated_type_equality_checks
     if (permission != Permission.contacts.isGranted &&
         // ignore: unrelated_type_equality_checks
@@ -44,17 +47,11 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: const Text("Contact Lists"),
         ),
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Speech to Text Converte r"),
-              ElevatedButton(onPressed: () {}, child: const Text("Start")),
-              ElevatedButton(onPressed: () {}, child: const Text("Stop"))
-            ],
-          ),
-        ),
+        body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+                children: List.generate(
+                    20, (index) => CustomeListWidget(context: context)))),
       ),
     );
   }
